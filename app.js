@@ -38,3 +38,14 @@ function mostrarMenu() {
 };
 
 mostrarMenu()
+
+function generarCodigosMenu() {
+    const nuevoMenu = menuCafeteria.map((item, index) => {
+
+        return(`CAF-${index + 101} - ${item}`);
+    });
+
+    console.log(nuevoMenu);
+};
+
+generarCodigosMenu()
