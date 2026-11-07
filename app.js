@@ -31,21 +31,43 @@ const menuCafeteria = [
     "Jugo Licuado Frutilla y Banana"
 ];
 
-// mostrar el menú 
-function mostrarMenu() {
-    menuCafeteria.forEach((item, index) => 
-        console.log(`${index + 1} - ${item}`));
+
+function agregarAlFinal(item) {
+    menuCafeteria.push(item)
 };
 
-mostrarMenu()
+function agregarAlInicio(item) {
+    menuCafeteria.unshift(item)
+    
+};
+
+function insertarEnPosicion(index, item) {
+    menuCafeteria.splice(2, 0, item)
+    
+};
+
+agregarAlFinal("Brownie de Chocolate");
+
+agregarAlInicio("Café Bombón");
+
+insertarEnPosicion(2, "Licuado de Durazno");
 
 function generarCodigosMenu() {
-    const nuevoMenu = menuCafeteria.map((item, index) => {
+    nuevoMenu = menuCafeteria.map((item, index) => {
 
-        return(`CAF-${index + 101} - ${item}`);
+        return(`Item-${index + 101} - ${item}`);
     });
 
     console.log(nuevoMenu);
 };
 
 generarCodigosMenu()
+
+
+// // mostrar el menú 
+// function mostrarMenu() {
+//     menuCafeteria.forEach((item, index) => 
+//         console.log(`${index + 1} - ${item}`));
+// };
+
+// mostrarMenu()
