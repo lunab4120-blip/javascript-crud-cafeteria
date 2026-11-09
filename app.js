@@ -122,7 +122,20 @@ function filtrarPorCategoria(categoria){
 
 filtrarPorCategoria("café");
 
+function ordernarCarta(modo){
+    if(modo === "asce"){
+        menuCafeteria.sort()
+    }
+    else if(modo === "desc"){
+        menuCafeteria.sort().reverse()
+    }
+    else{
+        console.warn("modo de orden equivocado")
+    }
+};
 
+ordernarCarta("asce");
+ordernarCarta("desc");
 
 
 
