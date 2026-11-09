@@ -52,22 +52,63 @@ agregarAlInicio("Café Bombón");
 
 insertarEnPosicion(2, "Licuado de Durazno");
 
+
+function actualizarProducto(nombreBuscado, nuevoNombre){
+    
+    const posición = menuCafeteria.findIndex((producto) => (producto.toLocaleLowerCase() === nombreBuscado.toLocaleLowerCase()));
+    
+    if (posición === -1){
+        console.warn("producto no encontrado")
+    }
+    else{
+        menuCafeteria.splice(posición, 1, nuevoNombre)
+    };
+    
+};
+actualizarProducto("café espresso clásico", "Café Espresso Vainilla");
+
+
+function eliminarUltimo(){
+    menuCafeteria.pop()
+
+};
+eliminarUltimo();
+
+function eliminarPrimero(){
+    menuCafeteria.shift()
+
+};
+eliminarPrimero();
+
+function eliminarPorNombre(itemEliminar){
+    const posición = menuCafeteria.findIndex((producto) => (producto.toLocaleLowerCase() === itemEliminar.toLocaleLowerCase()));
+    
+    if (posición === -1){
+        console.warn("producto no encontrado")
+    }
+    else{
+        menuCafeteria.splice(posición, 1)
+    };
+};
+eliminarPorNombre("Café Doble Ristretto");
+
+
+
+
 function generarCodigosMenu() {
     nuevoMenu = menuCafeteria.map((item, index) => {
 
         return(`Item-${index + 101} - ${item}`);
     });
-
-    console.log(nuevoMenu);
 };
 
 generarCodigosMenu()
 
 
-// // mostrar el menú 
-// function mostrarMenu() {
-//     menuCafeteria.forEach((item, index) => 
-//         console.log(`${index + 1} - ${item}`));
-// };
+//mostrar el menú 
+function mostrarMenu() {
+    nuevoMenu.forEach((item, index) => 
+        console.log(item));
+};
 
-// mostrarMenu()
+mostrarMenu()
