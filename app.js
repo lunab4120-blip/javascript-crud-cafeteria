@@ -93,6 +93,38 @@ function eliminarPorNombre(itemEliminar){
 eliminarPorNombre("Café Doble Ristretto");
 
 
+function buscarPrimerMatch(termino){
+    const resultadoBusqueda = menuCafeteria.find((producto) => 
+        (producto.toLowerCase().includes(termino.toLowerCase())));
+
+    if (resultadoBusqueda === undefined){
+        console.log("no hay conicidencias")
+    }
+    else{
+        console.log(resultadoBusqueda)
+    }
+    
+};
+
+buscarPrimerMatch("café");
+
+function filtrarPorCategoria(categoria){
+
+    const resultadoFiltrado = menuCafeteria.filter((producto) => (producto.toLowerCase().includes(categoria.toLowerCase())))
+
+    if (resultadoFiltrado === undefined){
+        console.log("no hay conicidencias")
+    }
+    else{
+        console.log(resultadoFiltrado)
+    }
+};
+
+filtrarPorCategoria("café");
+
+
+
+
 
 
 function generarCodigosMenu() {
