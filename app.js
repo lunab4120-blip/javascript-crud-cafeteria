@@ -31,6 +31,11 @@ const menuCafeteria = [
     "Jugo Licuado Frutilla y Banana"
 ];
 
+const menuTemporada = [   
+    "Smoothie Menta y Limón", 
+    "Frappé Caramelo Crocante", 
+    "Waffle con Dulce de Leche"
+];
 
 function agregarAlFinal(item) {
     menuCafeteria.push(item)
@@ -137,7 +142,21 @@ function ordernarCarta(modo){
 ordernarCarta("asce");
 ordernarCarta("desc");
 
+const copiaDeSeguridad = menuCafeteria.slice();
 
+const ArraysConcatenados = menuCafeteria.concat(menuTemporada);
+
+const arraysStrigns = ArraysConcatenados.reduce((acumulador, producto) =>{
+
+    if(acumulador === ""){
+        return acumulador + producto
+    }
+    else{
+        return acumulador + ", " + producto;
+    }
+}, "")
+
+console.log(arraysStrigns);
 
 
 function generarCodigosMenu() {
@@ -156,4 +175,6 @@ function mostrarMenu() {
         console.log(item));
 };
 
-mostrarMenu()
+mostrarMenu();
+
+menuCafeteria.slice();
