@@ -37,6 +37,10 @@ const menuTemporada = [
     "Waffle con Dulce de Leche"
 ];
 
+let nuevoMenu = []
+
+
+// agregar productos
 function agregarAlFinal(item) {
     menuCafeteria.push(item)
 };
@@ -51,51 +55,45 @@ function insertarEnPosicion(index, item) {
     
 };
 
-agregarAlFinal("Brownie de Chocolate");
-
-agregarAlInicio("Café Bombón");
-
-insertarEnPosicion(2, "Licuado de Durazno");
 
 
+
+//modificar un  producto 
 function actualizarProducto(nombreBuscado, nuevoNombre){
     
-    const posición = menuCafeteria.findIndex((producto) => (producto.toLocaleLowerCase() === nombreBuscado.toLocaleLowerCase()));
-    
-    if (posición === -1){
+    const posicion = menuCafeteria.findIndex((producto) => (producto.toLowerCase() === nombreBuscado.toLowerCase()));
+    console.log(posicion)
+    if (posicion === -1){
         console.warn("producto no encontrado")
     }
     else{
-        menuCafeteria.splice(posición, 1, nuevoNombre)
+        menuCafeteria.splice(posicion, 0, nuevoNombre)
     };
     
 };
-actualizarProducto("café espresso clásico", "Café Espresso Vainilla");
 
 
+// eliminar productos
 function eliminarUltimo(){
     menuCafeteria.pop()
 
 };
-eliminarUltimo();
 
 function eliminarPrimero(){
     menuCafeteria.shift()
 
 };
-eliminarPrimero();
 
-function eliminarPorNombre(itemEliminar){
-    const posición = menuCafeteria.findIndex((producto) => (producto.toLocaleLowerCase() === itemEliminar.toLocaleLowerCase()));
+function eliminarPorNombre (itemEliminar){
+    const posicion = menuCafeteria.findIndex((producto) => (producto.toLowerCase() === itemEliminar.toLowerCase()));
     
-    if (posición === -1){
+    if (posicion === -1){
         console.warn("producto no encontrado")
     }
     else{
-        menuCafeteria.splice(posición, 1)
+        menuCafeteria.splice(posicion, 1)
     };
 };
-eliminarPorNombre("Café Doble Ristretto");
 
 
 function buscarPrimerMatch(termino){
@@ -111,7 +109,6 @@ function buscarPrimerMatch(termino){
     
 };
 
-buscarPrimerMatch("café");
 
 function filtrarPorCategoria(categoria){
 
@@ -125,7 +122,6 @@ function filtrarPorCategoria(categoria){
     }
 };
 
-filtrarPorCategoria("café");
 
 function ordernarCarta(modo){
     if(modo === "asce"){
@@ -139,42 +135,71 @@ function ordernarCarta(modo){
     }
 };
 
-ordernarCarta("asce");
-ordernarCarta("desc");
 
 const copiaDeSeguridad = menuCafeteria.slice();
 
 const ArraysConcatenados = menuCafeteria.concat(menuTemporada);
 
-const arraysStrigns = ArraysConcatenados.reduce((acumulador, producto) =>{
+function arreglosConcatenados() {
+    
+    const arraysStrigns = ArraysConcatenados.reduce((acumulador, producto) =>{
+        
+        if(acumulador === ""){
+            return acumulador + producto
+        }
+        else{
+            return acumulador + ", " + producto;
+        }
+    }, "")
 
-    if(acumulador === ""){
-        return acumulador + producto
-    }
-    else{
-        return acumulador + ", " + producto;
-    }
-}, "")
-
-console.log(arraysStrigns);
-
-
-function generarCodigosMenu() {
-    nuevoMenu = menuCafeteria.map((item, index) => {
-
-        return(`Item-${index + 101} - ${item}`);
-    });
-};
-
-generarCodigosMenu()
+    console.log(arraysStrigns)
+    
+}
 
 
-//mostrar el menú 
 function mostrarMenu() {
-    nuevoMenu.forEach((item, index) => 
-        console.log(item));
+
+    // genera los codigos del menú 
+    function generarCodigosMenu() {
+        nuevoMenu = menuCafeteria.map((item, index) => {
+            
+            return(`Item-${index + 101} - ${item}`);
+        });
+    };
+    
+    
+    generarCodigosMenu()
+    
+    //mostrar el menú 
+    function menu() {
+        nuevoMenu.forEach((item, index) => 
+            console.log(item));
+    };
+    
+    menu();
+    
 };
 
 mostrarMenu();
 
-menuCafeteria.slice();
+
+function mostrarSome(palabra){
+    const existeCoincidencia = menuCafeteria.some((coincide) => coincide.toLowerCase().includes(palabra.toLowerCase()));
+
+    if (existeCoincidencia){
+        console.log(`existe un item con la palabra ${palabra}`)
+    } else{
+        console.log("no hay coincidencias")
+    }   
+}
+
+
+function mostrarEvery (){
+    const poseCuatroLetras = menuCafeteria.every((producto) => producto.length >= 4)
+
+    if(poseCuatroLetras){
+        console.log("todos los elementos poseen más de cuatro caráteres")
+    } else{
+        console.log("no todos los elementos poseen más de cuatro caráteres")
+    }
+}
