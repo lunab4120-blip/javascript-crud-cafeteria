@@ -28,3 +28,5 @@ consola.
 - `reduce()`: reúne los nombres de productos en una cadena.
 - `map()`: genera códigos para los productos.
 - `forEach()`: recorre y muestra los elementos del menú.
+- `every()`: recorre y muestra si todos los elementos cumplen con una condición.
+- `some()`: recorre y muestra si alguno de los elementos cumple una condición.
